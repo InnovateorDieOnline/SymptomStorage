@@ -1,0 +1,59 @@
+﻿<div id="scanScreen"
+	data-bb-type="screen"
+	data-bb-effect="fade"
+	>
+
+	<script src="js/scan.js"></script>
+	<link rel="stylesheet" href="css/scan.css"/>
+
+	<div id="screenTitle"
+		data-bb-type="title"
+		data-bb-caption="Capture Current Location"></div>
+
+	<div id="statusText">Status...</div>
+
+	<progress id="scanProgress" max="3" value="0"></progress>
+	<!-- bbui feature request... https://github.com/blackberry/bbUI.js/issues/354 -->
+	<!-- updating the max attr in code doesn't work, so for now keep the max attr in sync with the pub.scanLimit variable as defined in scan.js -->
+
+	<div id="scanResultsImageList"
+		data-bb-type="image-list"
+		data-bb-style="default"> <!--default | arrowlist | arrowbuttons | addbuttons | removebuttons-->
+	</div>
+
+	<div id="contextMenu" data-bb-type="context-menu">
+		<div id="btnSave"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/save.png">
+			Save
+		</div>
+		<div id="btnMap"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/map.png">
+			Map
+		</div>
+	</div>
+
+	<div data-bb-type="action-bar">
+		<div id="btnScanAgain"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/restart.png">
+			Start Over
+		</div>
+		<div id="btnHome"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/home.png">
+			Home
+		</div>
+		<div id="btnSavedLocations"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/list.png">
+			Saved Locations
+		</div>
+	</div>
+</div>

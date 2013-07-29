@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CIC</title>
+
+	<!-- v0.9.6.15: -->
+	<link rel="stylesheet" type="text/css" href="css/bbui-min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/myTravelLog.css"/>
+
+	<!-- v0.9.6.15: -->
+	<script type="text/javascript" src="lib/bbui-min.js"></script>
+	<!-- v1.0.4.11: -->
+	<script src="local:///chrome/webworks.js"></script>
+	<script src="lib/jquery-1.8.1.min.js"></script>
+
+	<script src="lib/date.js"></script>
+	<script src="lib/date.format.js"></script>
+
+	<script src="js/index.js"></script>
+	<script src="js/vo/LocationVO.js"></script>
+	<script src="js/vo/ImageVO.js"></script>
+
+	<script src="js/nav-utils.js"></script>
+	<script src="js/display-utils.js"></script>
+	<script src="js/database-utils.js"></script>
+	<script src="js/browser-utils.js"></script>
+
+	<script src="locales/strings.js"></script>
+
+	<script>
+		var webworksreadyFired = false;
+
+		app.ready = function () {
+			// ensure that we init() only once even if webworksready fires multiple times
+			if (webworksreadyFired) {
+				return;
+			}
+			webworksreadyFired = true;
+			console.log('calling bb.init from index.html');
+			bb.init({
+				bb10ActionBarDark : false,
+				bb10HighlightColor : '#00A8DF',
+				ondomready : function (element, id, params) {
+					console.log('ondomready; id: ' + id);
+					switch (id) {
+						case 'splashScreen' :
+							app.splash.register();
+							app.splash.onDOMReady();
+							break;
+
+						case 'savedLocationsScreen' :
+							app.savedLocations.onDOMReady();
+							break;
+
+						case 'scanScreen' :
+							app.scan.onDOMReady();
+							break;
+
+						case 'locationDetailsScreen' :
+							app.locationDetails.onDOMReady();
+							break;
+
+						case 'weatherScreen' :
+							app.weather.onDOMReady();
+							break;
+
+						case 'imagesScreen' :
+							app.images.onDOMReady();
+							break;
+						
+						case 'ideaJournal' :
+							app.ideaJournal.onDOMReady();
+							break;
+						
+					}
+				}
+			});
+			bb.pushScreen('splash.html', 'splashScreen');
+		};
+
+		window.addEventListener('load', function () {
+			document.addEventListener('webworksready', app.ready);
+		}, false);
+	</script>
+</head>
+<body>
+</body>
+</html>

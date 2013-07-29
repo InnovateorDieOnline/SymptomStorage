@@ -1,0 +1,46 @@
+<div id="locationDetailsScreen"
+	data-bb-type="screen"
+	data-bb-effect="fade">
+
+	<script src="js/location-details.js"></script>
+	<link href="css/locationDetails.css" rel="stylesheet"/>
+
+	<div id="screenTitle"
+		data-bb-type="title"
+		data-bb-caption="Location Details"></div>
+
+	<div data-bb-type="round-panel">
+
+		<div id="txtCoordinates" data-bb-type="panel-header"></div>
+
+		<div data-bb-type="label-control-container">
+
+			<div data-bb-type="row">
+				<div data-bb-type="label">Name</div>
+				<input id="txtName" type="text" placeholder="Name" disabled/>
+			</div>
+
+			<div data-bb-type="row">
+				<div data-bb-type="label">Description</div>
+				<input id="txtDescription" type="text" placeholder="Description" disabled/>
+			</div>
+
+			<div data-bb-type="row">
+				<div data-bb-type="label">Capture Date</div>
+				<input id="txtDate" type="text" placeholder="now" disabled/>
+			</div>
+		</div>
+	</div>
+
+	<div data-bb-type="action-bar"
+		data-bb-back-caption="Back">
+
+		<div id="btnEditSave"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-img="assets/icons/edit.png"
+			data-bb-overflow="false">
+			Edit
+		</div>
+	</div>
+</div>

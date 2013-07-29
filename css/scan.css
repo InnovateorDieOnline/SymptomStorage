@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#statusText {
+	color: #F00;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.bb-progress {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+@media screen and (orientation: portrait) {
+	/* to prevent text overlap */
+	.accent-text {
+		visibility: hidden;
+	}
+}

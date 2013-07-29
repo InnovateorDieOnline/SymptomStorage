@@ -1,0 +1,11 @@
+input:disabled {
+	border-style: none;
+	background-color: #b0c4de;
+	color: #ffebcd;
+}
+
+input:enabled {
+	border-style: solid;
+	background-color: #ffffff;
+	color: #000066;
+}

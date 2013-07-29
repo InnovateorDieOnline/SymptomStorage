@@ -1,0 +1,56 @@
+﻿<div id="weatherScreen"
+	data-bb-type="screen"
+	data-bb-effect="fade">
+
+	<script src="js/weather.js"></script>
+	<link rel="stylesheet" href="css/weather.css"/>
+
+	<div id="screenTitle"
+		data-bb-type="title"
+		data-bb-caption="Weather"></div>
+
+	<div id="container">
+		<div id="now">
+			<h1 class="dateHeading">Current Conditions</h1>
+			<img class="weatherIcon">
+
+			<div class="weatherString"></div>
+		</div>
+
+		<div id="today">
+			<h1 class="dateHeading">Today</h1>
+			<img class="weatherIcon">
+
+			<div class="weatherString"></div>
+		</div>
+
+		<div id="tomorrow">
+			<h1 class="dateHeading">Tomorrow</h1>
+			<img class="weatherIcon">
+
+			<div class="weatherString"></div>
+		</div>
+	</div>
+
+	<div id="activityIndicator"
+		data-bb-type="activity-indicator"
+		data-bb-size="medium">
+	</div>
+
+	<div data-bb-type="action-bar"
+		data-bb-back-caption="Back">
+		<div id="btnToggleCelsius"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-selected="true"
+			data-bb-img="assets/icons/temperature.png">
+		</div>
+
+		<div id="btnToggleKilometres"
+			data-bb-type="action"
+			data-bb-style="button"
+			data-bb-selected="true"
+			data-bb-img="assets/icons/speedMph.png">
+		</div>
+	</div>
+</div>

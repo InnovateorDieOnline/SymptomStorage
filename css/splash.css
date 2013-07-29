@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'Irish Grover';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../assets/fonts/IrishGrover.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Philosopher';
+	font-style: normal;
+	font-weight: normal;
+	src: url('../assets/fonts/Philosopher.woff') format('woff');
+}
+
+#splashScreen {
+	background: transparent url('../assets/images/logo.png');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: top-center;
+}
+
+#mainTitle {
+	font-family: 'Irish Grover', serif;
+	font-style: normal;
+	font-weight: normal;
+	/*color: #0d1ca1;*/
+	color: #000;
+	text-shadow: 4px 4px 4px #000066;
+}
+
+#subTitle {
+	position: fixed;
+	font-family: 'Philosopher', sans-serif;
+	color: #fff;
+	text-shadow: 2px 2px 4px #0d1ca1;
+}
+
+@media screen and (orientation: portrait) {
+
+	#mainTitle {
+		font-size: 100px;
+		-webkit-transform: skew(-15deg) rotate(-7deg) translate(100px, 275px);
+	}
+
+	#subTitle {
+		-webkit-transform: rotate(-7deg);
+		font-size: 25px;
+		left: 80px;
+		top: 410px;
+	}
+}
+
+@media screen and (orientation: landscape) {
+
+	#mainTitle {
+		font-size: 150px;
+		-webkit-transform: skew(-15deg) rotate(-7deg) translate(100px, 125px);
+	}
+
+	#subTitle {
+		-webkit-transform: rotate(-7deg);
+		font-size: 35px;
+		left: 200px;
+		top: 300px;
+	}
+}
+
+
+
+

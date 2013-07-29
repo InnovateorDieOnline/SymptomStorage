@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+	xmlns:rim="http://www.blackberry.com/ns/widgets"
+	version="1.0.0.0"
+	id="MyTravelLogMax">
+
+	<!-- ******************** -->
+	<!-- App title, localized -->
+	<!-- ******************** -->
+	<name>My Travel Log</name>
+	<name xml:lang="en_US">My Travel Log</name>
+	<name xml:lang="de_DE">Reisetagebuch</name>
+	<name xml:lang="es_ES">Cuaderno</name>
+	<name xml:lang="fr_FR">Carnet de voyage</name>
+
+	<author rim:copyright="2013 New Toronto Group" email="blackberry@newyyz.com" href="http://www.newyyz.com">New Toronto Group</author>
+
+	<icon src="assets/images/globe.png"/>
+
+	<content src="index.html"/>
+
+	<!-- ************************ -->
+	<!-- App-specific permissions -->
+	<!-- ************************ -->
+	<rim:permissions>
+		<rim:permit>read_geolocation</rim:permit>
+		<rim:permit>access_location_services</rim:permit>
+		<rim:permit>bbm_connect</rim:permit>
+		<rim:permit>access_pimdomain_calendars</rim:permit>
+	</rim:permissions>
+
+	<!-- *************** -->
+	<!-- External access -->
+	<!-- *************** -->
+
+	<!-- for flickr search data (json) -->
+	<access uri="http://api.flickr.com"/>
+	<!-- for flickr images from farm1. to farm9.  -->
+	<access uri="http://staticflickr.com/" subdomains="true"/>
+
+	<!-- for google image search data (json) -->
+	<access uri="https://ajax.googleapis.com"/>
+	<!-- for google images from t0. to t3. -->
+	<access uri="http://gstatic.com" subdomains="true"/>
+
+	<!-- for weather data (xml) from free. and icons from www. -->
+	<access uri="http://worldweatheronline.com/" subdomains="true"/>
+
+	<!-- ********************* -->
+	<!-- App-specific features -->
+	<!-- ********************* -->
+
+	<!-- to create dialogs -->
+	<feature id="blackberry.ui.dialog"/>
+
+	<!-- to invoke apps and cards -->
+	<feature id="blackberry.invoke"/>
+
+	<!-- to trap onswipedown event, etc. -->
+	<feature id="blackberry.app"/>
+
+	<!-- to listen for system events, etc. -->
+	<feature id="blackberry.system"/>
+
+	<!-- to allow toast notifications -->
+	<feature id="blackberry.ui.toast"/>
+
+	<!-- to listen for language change events -->
+	<feature id="blackberry.event"/>
+
+	<!-- to allow bbm integration -->
+	<feature id="blackberry.bbm.platform"/>
+
+	<!-- to invoke the calendar card -->
+	<feature id="blackberry.invoke.card"/>
+
+	<!-- to search and create calendar events -->
+	<feature id="blackberry.pim.calendar"/>
+
+	<!-- to listen for sensor events -->
+	<feature id="blackberry.sensors"/>
+
+</widget>

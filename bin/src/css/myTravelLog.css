@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+#activityIndicator {
+	margin: auto;
+	margin-top: 50px;
+}
+
+/* if the title is too long, this prevents it from wrapping down into the screen */
+[data-bb-type="title"] {
+	white-space: nowrap;
+}

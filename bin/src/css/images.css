@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#googleOutput, #flickrOutput {
+	/*fadeIn effect runs after content is available*/
+	display: none;
+}
+
+#scrollPanelImages, #scrollPanelThumbs {
+	/*for inertial scrolling */
+	overflow: scroll;
+	-webkit-overflow-scrolling: -blackberry-touch;
+}
+
+#scrollPanelImages img, #scrollPanelThumbs img {
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+@media screen and (orientation: landscape) {
+
+	#scrollPanelImages {
+		height: 468px;
+	}
+
+	#scrollPanelImages img {
+		float: left;
+		padding-bottom: 10px;
+		max-width: 1216px; /* 1236 - 20px padding */
+	}
+}
+
+@media screen and (orientation: portrait) {
+
+	#scrollPanelImages {
+		height: 980px;
+	}
+
+	#scrollPanelImages img {
+		max-width: 704px; /* 724 - 20px padding */
+	}
+
+	#scrollPanelThumbs {
+		max-height: 220px; /* max-height: 200px + 20px padding */
+	}
+
+	#scrollPanelThumbs img {
+		max-width: 161px; /* 161 + 20px padding = 180 x 4 = 724*/
+		max-height: 200px;
+		object-fit: contain;
+	}
+
+}
