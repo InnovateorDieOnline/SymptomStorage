@@ -19,7 +19,7 @@ app.splash = function () {
 		}
 
 		app.database = app.databaseUtils.getDatabase();
-		app.ideaDatabase = app.databaseUtils.getIdeaDatabase();
+		//app.ideaDatabase = app.databaseUtils.getIdeaDatabase();
 		app.databaseUtils.getData();
 		pub.addEventListeners();
 	};

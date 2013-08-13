@@ -28,16 +28,16 @@ app.databaseUtils = function () {
 			});
 		});	
 		
-		app.ideaDatabase.transaction(function (tx) {
+		app.database.transaction(function (tx) {
 			var createIdeaSQL;
 
 			tx.executeSql('SELECT COUNT(*) FROM idea', [], function (tx, result) {
 				console.log('Idea table exists');
-				pub.getIdea(app.ideaDatabase);
+				pub.getIdea(app.database);
 			}, function (tx, error) {
 				console.log('Creating Idea table');
 				createIdeaSQL = pub.getIdeaDBCreationSQL();
-				pub.createIdeaTable(app.ideaDatabase, createIdeaSQL);
+				pub.createIdeaTable(app.database, createIdeaSQL);				
 			});
 		});
 		
@@ -262,7 +262,7 @@ app.databaseUtils = function () {
 					numRows = rows.length,
 					locationVO,
 					i;
-
+				console.log('numRows is ' + numRows);
 				for (i = 0; i < numRows; i++) {
 					locationVO = new LocationVO(rows.item(i));
 					app.model.savedLocations.push(locationVO);
@@ -360,10 +360,10 @@ app.databaseUtils = function () {
 		});
 	};
 	
-	pub.getIdea = function (ideaDatabase){
+	pub.getIdea = function (database){
 		console.log('Getting ideas.');
 
-		var selectSQL = 'SELECT idea_ID, '
+		var selectIdeaSQL = 'SELECT idea_ID, '
 			+ 'ideaTitle, '
 			+ 'ideaDescription '
 			+ 'date '
@@ -372,13 +372,13 @@ app.databaseUtils = function () {
 
 		app.model.savedIdeas = [];
 
-		ideaDatabase.transaction(function (tx) {
-			tx.executeSql(selectSQL, [], function (tx, result) {
+		database.transaction(function (tx) {
+			tx.executeSql(selectIdeaSQL, [], function (tx, result) {
 				var rows = result.rows,
 					numRows = rows.length,
 					idea,
 					i;
-
+				console.log('numRows is ' + numRows);
 				for (i = 0; i < numRows; i++) {
 					idea = new idea(rows.item(i));
 					app.model.savedIdeas.push(idea);

@@ -1,4 +1,4 @@
-function idea(idea) {
+function IdeaVo(idea) {
 	if (idea) {
 		this.idea_ID = idea.idea_ID || 0;
 		this.ideaTitle = idea.ideaTitle || '';
