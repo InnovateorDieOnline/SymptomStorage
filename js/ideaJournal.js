@@ -1,10 +1,14 @@
 app.ideaJournal = function () {
 
 	'use strict';
-	localStorage.setItem("1", "a good idea");
-	localStorage.setItem("2", "a sort of good idea");
-	localStorage.setItem("3", "a terrible idea");
-	localStorage.setItem("4", "a better than bad idea");
+	var job1 = { 'idea' : 'a good idea'};
+	localStorage.setItem('1', JSON.stringify(job1));
+	var job2 = {'idea' : 'a sort of good idea'};
+	localStorage.setItem("2", JSON.stringify(job2));
+	var job3 = {'idea' : 'a terrible idea'};
+	localStorage.setItem("3", JSON.stringify(job3));
+	var job4 = {'idea' : 'a better than bad idea'};
+	localStorage.setItem("4", JSON.stringify(job4));
 	
 	var JSONObject_idea = {'idea' : 'some kind of good idea', 'description' : 'you won'};
 	localStorage.setItem("5", JSON.stringify(JSONObject_idea));
@@ -61,28 +65,27 @@ app.ideaJournal = function () {
 
 		for (i = 1; i < 5; i++) {
 					
-			idea = localStorage.getItem(i);
+			idea = JSON.parse(localStorage.getItem(i));
 			newItem = document.createElement('div');
 			newItem.setAttribute('data-bb-type', 'item');
-			newItem.setAttribute('data-bb-title', localStorage.getItem(i));
-			newItem.setAttribute('data-bb-accent-text', 'this is the description');
+			newItem.setAttribute('data-bb-title', idea.idea);
+			newItem.setAttribute('data-bb-accent-text', 'something');
 			newItem.setAttribute('data-idx', '1');
 			//newItem.innerHTML = idea.ideaDescription;
 			ideaList.appendItem(newItem);
-			var retrievedObject = JSON.parse(localStorage.getItem('5'));
-			console.log('The value of the JSON object is ' + retrievedObject.description );
+			//var retrievedObject = JSON.parse(localStorage.getItem('5'));
+			//console.log('The value of the JSON object is ' + retrievedObject.description );
 
 			$(newItem).on('click', function (event) {
 				var rowIdx = event.currentTarget.dataset.idx,
 					context = document.getElementById('contextMenu'),
-					selectedIdea;
+					selectedLocationVO;
 
-				selectedIdea = app.model.savedIdeas[rowIdx];
-				//if (selectedIdea) {
-					//app.model.selectedIdea = selectedIdea;
-					console.log('Click on idea ' + i);
-					context.menu.show({title : localStorage.getItem(i)});
-				//}
+				selectedLocationVO = app.model.savedLocations[rowIdx];
+				if (selectedLocationVO) {
+					app.model.selectedLocationVO = selectedLocationVO;
+					context.menu.show({title : '' , description : '' , selected : event.currentTarget});
+				}
 			});
 		} 
 		$(ideaList).fadeIn('fast');
@@ -107,9 +110,9 @@ app.ideaJournal = function () {
 	};
 
 	pub.viewDetails = function () {
-		console.log('saved locations screen -> Details button');
+		console.log('saved ideas screen -> Details button');
 
-		bb.pushScreen('locationDetails.html', 'locationDetailsScreen');
+		bb.pushScreen('ideaDetails.html', 'ideaDetailsScreen');
 	};
 
 	pub.doDeletePrompt = function () {
