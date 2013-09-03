@@ -5,10 +5,11 @@ app.ideaDetails = function () {
 	var pub = {},
 		initUI,
 		locationName;
-
-	pub.onDOMReady = function () {
-		console.log('in app.locationDetails.onDOMReady');
-
+	//var idea = params.idea;
+	pub.onDOMReady = function (element, id, params) {
+		console.log('in app.ideaDetails.onDOMReady');
+		//var idea = params;
+		console.log('the params in the screen are ' + params.idea);
 		pub.addEventListeners();
 		initUI();
 	};
@@ -23,13 +24,13 @@ app.ideaDetails = function () {
 
 		var locationVO = app.model.selectedLocationVO;
 
-		$('#txtCoordinates').html(app.displayUtils.decimalToDMS(locationVO.latitude) + ' ' + app.displayUtils.decimalToDMS(locationVO.longitude, true) + ' to within ' + locationVO.horizontalAccuracy + 'm');
-		if (locationVO.name) {
-			$('#txtName').attr('value', locationVO.name);
-			$('#txtDescription').attr('value', locationVO.description);
-		} else {
-			pub.prepareForSave();
-		}
+		//$('#txtCoordinates').html(app.displayUtils.decimalToDMS(locationVO.latitude) + ' ' + app.displayUtils.decimalToDMS(locationVO.longitude, true) + ' to within ' + locationVO.horizontalAccuracy + 'm');
+		//if (locationVO.name) {
+			$('#txtName').attr('value', 'love');
+			$('#txtDescription').attr('value', 'idea');
+		//} else {
+		//	pub.prepareForSave();
+	//	}
 		$('#txtDate').attr('value', locationVO.addDate);
 	};
 

@@ -42,7 +42,7 @@
 				bb10ActionBarDark : false,
 				bb10HighlightColor : '#00A8DF',
 				ondomready : function (element, id, params) {
-					console.log('ondomready; id: ' + id);
+					console.log('ondomready; id: ' + id);					
 					switch (id) {
 						case 'splashScreen' :
 							app.splash.register();
@@ -71,6 +71,10 @@
 						
 						case 'ideaJournal' :
 							app.ideaJournal.onDOMReady();
+							break;
+						case 'ideaDetailsScreen' :
+							//console.log('the params for this event are ' + params.idea);
+							app.ideaDetails.onDOMReady(element, id, params);							
 							break;
 						
 					}

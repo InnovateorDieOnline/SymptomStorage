@@ -56,12 +56,7 @@ app.ideaJournal = function () {
 	pub.populateIdeaGrid = function () {
 		console.log('in app.ideaJournal.populateIdeaGrid');
 		
-		app.model.selectedIdea = null;
-
-		var ideaList = document.getElementById('ideaList'),
-			numIdeas = app.model.savedIdeas.length,
-			i, idea, newItem;
-		console.log(' the number of ideas are ' + numIdeas);
+			var ideaList = document.getElementById('ideaList'),idea, newItem;			
 
 		for (i = 1; i < 5; i++) {
 					
@@ -70,7 +65,7 @@ app.ideaJournal = function () {
 			newItem.setAttribute('data-bb-type', 'item');
 			newItem.setAttribute('data-bb-title', idea.idea);
 			newItem.setAttribute('data-bb-accent-text', 'something');
-			newItem.setAttribute('data-idx', '1');
+			newItem.setAttribute('data-idx', i);
 			//newItem.innerHTML = idea.ideaDescription;
 			ideaList.appendItem(newItem);
 			//var retrievedObject = JSON.parse(localStorage.getItem('5'));
@@ -79,13 +74,14 @@ app.ideaJournal = function () {
 			$(newItem).on('click', function (event) {
 				var rowIdx = event.currentTarget.dataset.idx,
 					context = document.getElementById('contextMenu'),
-					selectedLocationVO;
-
-				selectedLocationVO = app.model.savedLocations[rowIdx];
-				if (selectedLocationVO) {
-					app.model.selectedLocationVO = selectedLocationVO;
-					context.menu.show({title : '' , description : '' , selected : event.currentTarget});
-				}
+					selectedIdea;
+				
+				//selectedLocationVO = app.model.savedIdeas[rowIdx];
+				selectedIdea = event.currentTarget;
+				//if (selectedLocationVO) {
+					app.model.selectedIdeaVO = selectedIdeaVO;
+					context.menu.show({title : selectedLocationVO.name, description : selectedLocationVO.description, selected : event.currentTarget});
+				//}				
 			});
 		} 
 		$(ideaList).fadeIn('fast');
@@ -109,10 +105,10 @@ app.ideaJournal = function () {
 		bb.pushScreen('images.html', 'imagesScreen');
 	};
 
-	pub.viewDetails = function () {
+	pub.viewDetails = function (ideaDetails) {
 		console.log('saved ideas screen -> Details button');
 
-		bb.pushScreen('ideaDetails.html', 'ideaDetailsScreen');
+		bb.pushScreen('ideaDetails.html', 'ideaDetailsScreen', {idea : selectedIdea});
 	};
 
 	pub.doDeletePrompt = function () {

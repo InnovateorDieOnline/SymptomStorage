@@ -4,7 +4,7 @@ app = {
 	dateMask : 'yyyy-mm-dd HH:mm:ss',
 	model : {
 		selectedLocationVO : {},
-		selectedIdea : {},
+		selectedIdeaVO : {},		
 		savedLocations : [],
 		savedIdeas : [],
 		scannedLocations : [],
