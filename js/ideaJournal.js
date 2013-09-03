@@ -1,6 +1,7 @@
 app.ideaJournal = function () {
 
 	'use strict';
+	localStorage.clear();
 	var job1 = { 'idea' : 'a good idea'};
 	localStorage.setItem('1', JSON.stringify(job1));
 	var job2 = {'idea' : 'a sort of good idea'};
@@ -11,17 +12,7 @@ app.ideaJournal = function () {
 	localStorage.setItem("4", JSON.stringify(job4));
 	
 	var JSONObject_idea = {'idea' : 'some kind of good idea', 'description' : 'you won'};
-	localStorage.setItem("5", JSON.stringify(JSONObject_idea));
-	
-	
-	var i = 1;
-	console.log('i is currently ' + i);
-	console.log(localStorage.getItem(i));
-	for( i=1; i < 8; i++)
-	{
-		console.log('i is currently ' + i);
-		console.log(localStorage.getItem(i));
-	}
+	localStorage.setItem("5", JSON.stringify(JSONObject_idea));	
 	
 	var pub = {},
 		initUI;
@@ -38,15 +29,13 @@ app.ideaJournal = function () {
 		console.log('in app.savedLocations.addEventListeners');
 
 		//action bar overflow
-		document.getElementById('btnHome').addEventListener('click', app.navUtils.goHome);
-		document.getElementById('btnScan').addEventListener('click', app.navUtils.goToScan);
+		$('#btnHome').bind('click', app.navUtils.goHome);
+		$('#btnScan').bind('click', app.navUtils.goToScan);
 
 		// context menu
-		document.getElementById('btnDelete').addEventListener('click', pub.doDeletePrompt);
-		document.getElementById('btnDetails').addEventListener('click', pub.viewDetails);
-		document.getElementById('btnWeather').addEventListener('click', pub.showWeather);
-		document.getElementById('btnMap').addEventListener('click', pub.showMap);
-		document.getElementById('btnImages').addEventListener('click', pub.showImages);
+		$('#btnDelete').bind('click', pub.doDeletePrompt);
+		$('#btnDetails').bind('click', pub.viewDetails);		
+		$('#btnImages').bind('click', pub.showImages);
 	};
 
 	initUI = function () {
@@ -54,14 +43,16 @@ app.ideaJournal = function () {
 	};
 
 	pub.populateIdeaGrid = function () {
+		
 		console.log('in app.ideaJournal.populateIdeaGrid');
 		
-			var ideaList = document.getElementById('ideaList'),idea, newItem;			
+		var ideaList = document.getElementById('ideaList');			
 
-		for (i = 1; i < 5; i++) {
+		for (i = 0; i < localStorage.length; i++) {
 					
-			idea = JSON.parse(localStorage.getItem(i));
-			newItem = document.createElement('div');
+			var	idea = JSON.parse(localStorage.getItem(localStorage.key(i)));
+			
+			var	newItem = document.createElement('div');
 			newItem.setAttribute('data-bb-type', 'item');
 			newItem.setAttribute('data-bb-title', idea.idea);
 			newItem.setAttribute('data-bb-accent-text', 'something');
@@ -72,33 +63,18 @@ app.ideaJournal = function () {
 			//console.log('The value of the JSON object is ' + retrievedObject.description );
 
 			$(newItem).on('click', function (event) {
-				var rowIdx = event.currentTarget.dataset.idx,
-					context = document.getElementById('contextMenu'),
-					selectedIdea;
+				var rowIdx = event.currentTarget.dataset.idx;
+				var	context = document.getElementById('contextMenu');				
+				var	selectedIdea = event.currentTarget;		
 				
-				//selectedLocationVO = app.model.savedIdeas[rowIdx];
-				selectedIdea = event.currentTarget;
-				//if (selectedLocationVO) {
-					app.model.selectedIdeaVO = selectedIdeaVO;
-					context.menu.show({title : selectedLocationVO.name, description : selectedLocationVO.description, selected : event.currentTarget});
-				//}				
+				context.menu.show();	
+
+				
 			});
 		} 
 		$(ideaList).fadeIn('fast');
 	};
-
-	pub.showMap = function () {
-		console.log('saved locations screen -> Map button');
-		var url = 'http://maps.google.ca/maps?q=' + app.model.selectedLocationVO.latitude + '%2C' + app.model.selectedLocationVO.longitude;
-		app.browserUtils.openBrowser(url);
-	};
-
-	pub.showWeather = function () {
-		console.log('saved locations screen -> Weather button');
-
-		bb.pushScreen('weather.html', 'weatherScreen');
-	}; 
-
+	
 	pub.showImages = function () {
 		console.log('saved locations screen -> Images button');
 
